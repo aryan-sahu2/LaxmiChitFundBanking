@@ -25,7 +25,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Laxmi Chit Fund",
-  description: " is modern banking platform for everyone!",
+  description: "Laxmi Chit Fund is modern banking platform for everyone and not a place where you can double your money in 25 days!",
   icons:{
     icon:"/icons/logo.svg"
   }
