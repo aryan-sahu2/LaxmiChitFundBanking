@@ -6,13 +6,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import Footer from "./Footer";
 
 const Sidebar = ({ user }: SiderbarProps) => {
   const pathname = usePathname();
   return (
     <section className="sidebar">
       <nav className="flex flex-col gap-4">
-        <Link href="/" className="flex gap-4 mb-12 cursor-pointer items-center ">
+        <Link
+          href="/"
+          className="flex gap-4 mb-12 cursor-pointer items-center "
+        >
           <Image
             className="size-[24px] max-xl:size-14"
             src={"/icons/logo.svg"}
@@ -32,16 +36,22 @@ const Sidebar = ({ user }: SiderbarProps) => {
               className={cn("sidebar-link", { "bg-bank-gradient": isActive })}
             >
               <div className="relative size-6">
-                <Image className={cn({"brightness-[3] invert-0":isActive})} fill src={item.imgURL} alt={item.label} />
+                <Image
+                  className={cn({ "brightness-[3] invert-0": isActive })}
+                  fill
+                  src={item.imgURL}
+                  alt={item.label}
+                />
               </div>
-              <p className={cn('sidebar-label',{"!text-white":isActive})}>{item.label}</p>
+              <p className={cn("sidebar-label", { "!text-white": isActive })}>
+                {item.label}
+              </p>
             </Link>
           );
         })}
-
         USER
       </nav>
-      FOOTER
+      <Footer user={user}></Footer>
     </section>
   );
 };
