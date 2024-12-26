@@ -5,7 +5,7 @@ import React from "react";
 const SignUp = async () => {
 
   const loggedInUser = await getLoggedInUser()
-  console.log(loggedInUser)
+  // console.log(loggedInUser)
 
   return (
     <div>

@@ -13,9 +13,10 @@ import { authFormSchema } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
+import PlaidLink from "@/components/PlaidLink";
 import CustomInput from "./CustomInput";
 import SignIn from "@/app/(auth)/sign-in/page";
-import {  signIn, signUp } from "@/lib/actions/user.actions";
+import { signIn, signUp } from "@/lib/actions/user.actions";
 
 const AuthForm = ({ type }: { type: string }) => {
   const router = useRouter();
@@ -39,7 +40,19 @@ const AuthForm = ({ type }: { type: string }) => {
 
     try {
       if (type === "sign-up") {
-        const newUser = await signUp(data);
+        const userData = {
+          firstName: data.firstName!,
+          lastName: data.lastName!,
+          address1: data.address1!,
+          city: data.city!,
+          postalCode: data.postalCode!,
+          email: data.email!,
+          password: data.password!,
+          ssn: data.ssn!,
+          state: data.state!,
+          dateOfBirth: data.dateOfBirth!,
+        };
+        const newUser = await signUp(userData);
         setUser(newUser);
       }
       if (type === "sign-in") {
@@ -56,7 +69,7 @@ const AuthForm = ({ type }: { type: string }) => {
       setIsLoading(false);
     }
 
-    console.log(data);
+    // console.log(data);
     setIsLoading(false);
   };
 
@@ -89,7 +102,9 @@ const AuthForm = ({ type }: { type: string }) => {
         </div>
       </header>
       {user ? (
-        <div className="flex flex-col gap-4">{/* PlaidLink */}</div>
+        <div className="flex flex-col gap-4">
+          <PlaidLink user={user} variant="primary" />
+        </div>
       ) : (
         <>
           <Form {...form}>
@@ -145,8 +160,8 @@ const AuthForm = ({ type }: { type: string }) => {
                     />
                     <CustomInput
                       control={form.control}
-                      name="pancard"
-                      label="Pancard Number"
+                      name="ssn"
+                      label="ssn Number"
                       placeholder="Example: WPL1547DD"
                     />
                   </div>

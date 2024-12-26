@@ -200,10 +200,10 @@ export const authFormSchema =(type:string)=> z.object({
   firstName: type==='sign-in'? z.string().optional() :  z.string().min(3,{message:"first Name must be greater than 3 characters"}),
   lastName: type==='sign-in'? z.string().optional() :  z.string().min(3,{message:"last Name must be greater than 3 characters"}),
   address1: type==='sign-in'? z.string().optional() :  z.string().max(50),
-  state: type==='sign-in'? z.string().optional() :  z.string().min(3,{message:"state must be greater than 3 characters"}),
+  state: type==='sign-in'? z.string().optional() :  z.string().min(2,{message:"state must be greater than 2 characters"}),
   postalCode: type==='sign-in'? z.string().optional() :  z.string().min(3,{message:"postal Code must be greater than 3 characters"}).max(6),
   dateOfBirth: type==='sign-in'? z.string().optional() :  z.string().min(3,{message:"date Of Birth must be greater than 3 characters"}),
-  pancard: type==='sign-in'? z.string().optional() :  z.string().min(3,{message:"pancard must be greater than 3 characters"}),
+  ssn: type==='sign-in'? z.string().optional() :  z.string().min(3,{message:"ssn must be greater than 3 characters"}),
   city: type==='sign-in'? z.string().optional() :  z.string().min(3,{message:"City name must be greater than 3 characters"}),
   //sign in and sign up
   email: z.string().email(),
